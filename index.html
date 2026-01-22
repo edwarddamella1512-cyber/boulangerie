@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Vibe | Boulangerie Artisanale Bruxelles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #d4a373; --dark: #1a1a1a; --beige: #fefae0; --white: #ffffff; }
+        body { font-family: 'Poppins', sans-serif; margin: 0; background: var(--beige); color: #333; line-height: 1.6; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
+
+        /* Navigation */
+        nav { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        .lang-btns button { background: var(--dark); color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 4px; font-weight: bold; font-size: 0.7rem; transition: 0.3s; }
+        .lang-btns button:hover { background: var(--gold); }
+
+        /* Hero Section */
+        .hero { height: 70vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('Unknown-4.png'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 4rem; margin: 0; color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+
+        /* Section Histoire */
+        .section { padding: 60px 10%; max-width: 1200px; margin: auto; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .about-img { width: 100%; border-radius: 15px; box-shadow: 15px 15px 0px var(--gold); object-fit: cover; }
+        .title-underline { width: 60px; height: 4px; background: var(--gold); margin: 10px 0 25px; }
+
+        /* Produits Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
+        .card img { width: 100%; height: 230px; object-fit: cover; }
+        .card-info { padding: 20px; }
+        .price { color: #8b4513; font-weight: bold; font-size: 1.2rem; display: block; margin-bottom: 15px; }
+        .qty-input { width: 60px; padding: 8px; border: 1px solid #ddd; border-radius: 5px; text-align: center; }
+
+        /* Avis Clients */
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .review-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border-bottom: 3px solid var(--gold); }
+
+        /* Commande */
+        .order-box { background: white; padding: 40px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); text-align: center; }
+        .btn-whatsapp { background: #25D366; color: white; border: none; padding: 18px 30px; border-radius: 50px; font-weight: bold; width: 100%; cursor: pointer; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; }
+
+        /* Footer */
+        footer { background: var(--dark); color: white; padding: 60px 10% 20px; margin-top: 60px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; text-align: left; }
+        .footer-grid h3 { color: var(--gold); margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-grid p { font-size: 0.9rem; margin: 5px 0; color: #ccc; }
+        .copyright { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #333; font-size: 0.8rem; color: #777; }
+
+        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">BEST VIBE</div>
+    <div class="nav-right">
+        <div class="lang-btns">
+            <button onclick="setLang('fr')">FR</button>
+            <button onclick="setLang('nl')">NL</button>
+            <button onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1 id="h-title">Best Vibe</h1>
+    <p id="h-sub">Artisans de père en fils depuis 1967</p>
+</header>
+
+<section class="section">
+    <div class="about-grid">
+        <div>
+            <h2 id="a-title">Notre Histoire</h2>
+            <div class="title-underline"></div>
+            <p id="a-text">Depuis 1967, chez Best Vibe, nous transmettons le savoir-faire du pain artisanal de grand-père à père, puis de père en fils. Nous sélectionnons nos céréales avec soin pour garantir une qualité authentique et un goût incomparable.</p>
+        </div>
+        <img src="histoire.png" alt="Notre Histoire" class="about-img">
+    </div>
+</section>
+
+<section class="section" style="background: #fdfaf0; max-width: 100%;">
+    <div style="max-width: 1200px; margin: auto;">
+        <h2 class="text-center" id="p-title" style="text-align: center;">Nos Spécialités</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="Unknown.png" alt="Brownie">
+                <div class="card-info">
+                    <h3>Brownie</h3>
+                    <span class="price">1,85 €</span>
+                    <input type="number" class="qty qty-input" data-name="Brownie" min="0" value="0">
+                </div>
+            </div>
+            <div class="card">
+                <img src="Unknown-1.png" alt="Pain bois">
+                <div class="card-info">
+                    <h3 id="p1-t">Pain au four de bois</h3>
+                    <span class="price">2,75 €</span>
+                    <input type="number" class="qty qty-input" data-name="Pain au four de bois" min="0" value="0">
+                </div>
+            </div>
+            <div class="card">
+                <img src="Unknown-2.png" alt="Eclair">
+                <div class="card-info">
+                    <h3 id="p2-t">Éclair à la crème</h3>
+                    <span class="price">1,56 €</span>
+                    <input type="number" class="qty qty-input" data-name="Eclair" min="0" value="0">
+                </div>
+            </div>
+            <div class="card">
+                <img src="Unknown-3.png" alt="Croissant">
+                <div class="card-info">
+                    <h3 id="p3-t">Croissant au Beurre</h3>
+                    <span class="price">1,40 €</span>
+                    <input type="number" class="qty qty-input" data-name="Croissant" min="0" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="text-center" style="text-align: center;">Avis Clients</h2>
+    <div class="review-grid">
+        <div class="review-card">
+            <p>"Le pain au four de bois est exceptionnel, on sent vraiment la tradition."</p>
+            <span style="font-weight: bold; color: var(--gold);">- Marc D.</span>
+        </div>
+        <div class="review-card">
+            <p>"Les meilleurs brownies que j'ai mangé. Bravo à l'équipe !"</p>
+            <span style="font-weight: bold; color: var(--gold);">- Sarah J.</span>
+        </div>
+        <div class="review-card">
+            <p>"Toujours frais et délicieux. Un incontournable à Bruxelles."</p>
+            <span style="font-weight: bold; color: var(--gold);">- Thomas L.</span>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="order-box">
+        <h2 id="form-title">Pick & Collect</h2>
+        <input type="text" id="name" placeholder="Votre Nom" style="width: 80%; padding: 12px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ddd;"><br>
+        <input type="time" id="time" style="width: 80%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;"><br>
+        <button class="btn-whatsapp" onclick="sendOrder()" id="btn-text">Commander via WhatsApp</button>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h3>Best Vibe</h3>
+            <p>Boulangerie Artisanale</p>
+            <p>Depuis 1967</p>
+        </div>
+        <div>
+            <h3 id="f-contact">Contact</h3>
+            <p>📍 Rue Filo 67, 1000 Bruxelles</p>
+            <p>📞 +32 2 345 67 23</p>
+            <p>✉️ info@bestvibe.be</p>
+            <p>📸 @filo.44</p>
+        </div>
+        <div>
+            <h3 id="f-hours">Horaires</h3>
+            <p>Lun - Ven : 06:30 - 18:30</p>
+            <p>Samedi : 07:00 - 17:00</p>
+            <p>Dimanche : 07:00 - 13:00</p>
+        </div>
+    </div>
+    <div class="copyright">© 2026 Best Vibe Bruxelles - Qualité Artisanale Garantie</div>
+</footer>
+
+<script>
+    const langData = {
+        fr: {
+            h_sub: "Artisans de père en fils depuis 1967", a_title: "Notre Histoire",
+            a_text: "Depuis 1967, chez Best Vibe, nous transmettons le savoir-faire du pain artisanal de grand-père à père, puis de père en fils.",
+            p_title: "Nos Spécialités", p1_t: "Pain au four de bois", p2_t: "Éclair à la crème", p3_t: "Croissant au Beurre",
+            form_title: "Pick & Collect", btn_text: "Commander via WhatsApp", f_hours: "Horaires"
+        },
+        nl: {
+            h_sub: "Ambachtslieden van vader op zoon sinds 1967", a_title: "Ons Verhaal",
+            a_text: "Sinds 1967 geven wij bij Best Vibe de kennis van ambachtelijk brood door.",
+            p_title: "Onze Specialiteiten", p1_t: "Houtovenbrood", p2_t: "Eclair met room", p3_t: "Boter Croissant",
+            form_title: "Afhalen", btn_text: "Bestellen via WhatsApp", f_hours: "Openingsuren"
+        },
+        en: {
+            h_sub: "Artisans from father to son since 1967", a_title: "Our Story",
+            a_text: "Since 1967, at Best Vibe, we pass down the skills of artisanal bread making.",
+            p_title: "Our Specialties", p1_t: "Wood-fired bread", p2_t: "Cream éclair", p3_t: "Butter Croissant",
+            form_title: "Pick & Collect", btn_text: "Order via WhatsApp", f_hours: "Opening Hours"
+        }
+    };
+
+    function setLang(lang) {
+        document.getElementById('h-sub').innerText = langData[lang].h_sub;
+        document.getElementById('a-title').innerText = langData[lang].a_title;
+        document.getElementById('a-text').innerText = langData[lang].a_text;
+        document.getElementById('p-title').innerText = langData[lang].p_title;
+        document.getElementById('p1-t').innerText = langData[lang].p1_t;
+        document.getElementById('p2-t').innerText = langData[lang].p2_t;
+        document.getElementById('p3-t').innerText = langData[lang].p3_t;
+        document.getElementById('form-title').innerText = langData[lang].form_title;
+        document.getElementById('btn-text').innerText = langData[lang].btn_text;
+        document.getElementById('f-hours').innerText = langData[lang].f_hours;
+    }
+
+    function sendOrder() {
+        const name = document.getElementById('name').value;
+        const time = document.getElementById('time').value;
+        let list = "";
+        document.querySelectorAll('.qty').forEach(q => {
+            if(parseInt(q.value) > 0) list += `%0A- ${q.value} x ${q.getAttribute('data-name')}`;
+        });
+        if(!name || !time || list === "") { alert("Veuillez remplir le formulaire !"); return; }
+        window.open(`https://wa.me/3223456723?text=Bonjour !%0ACommande pour : ${name}%0AHeure : ${time}%0A%0AArticles :${list}`, '_blank');
+    }
+</script>
+</body>
+</html>
